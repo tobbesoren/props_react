@@ -5,7 +5,6 @@ import './App.css'
 
 function App() {
   
-
   return (
     <>
       <ParentComponent/>
@@ -13,12 +12,13 @@ function App() {
   )
 }
 
-export default App
+
 
 
 const ParentComponent = () => {
-  const [savings, setSavings] = useState(250);
-  const moneyNeeded = 100;
+
+  const [savings, setSavings] = useState(2500);
+  const moneyNeeded = 80;
 
   return (
     <>
@@ -36,22 +36,25 @@ const ParentComponent = () => {
 
 
 const ChildComponent = (props) => {
+
   const [childMoney, setChildMoney] = useState(0);
   const [numberOfToys, setNumberOfToys] = useState(0);
 
   const askForMoney = () => {
+    
     if (props.savings >= props.moneyNeeded) {
     props.setSavings(props.savings - props.moneyNeeded);
     setChildMoney(childMoney + props.moneyNeeded);
     }
   }
+  
+  const buyToy = () => {
 
-const buyToy = () => {
-  if (childMoney >= props.moneyNeeded) {
-    setChildMoney(childMoney - props.moneyNeeded);
-    setNumberOfToys(numberOfToys + 1);
+    if (childMoney >= props.moneyNeeded) {
+      setChildMoney(childMoney - props.moneyNeeded);
+      setNumberOfToys(numberOfToys + 1);
+    }
   }
-}
 
   return (
     <>
@@ -67,3 +70,5 @@ const buyToy = () => {
     </>
   )
 }
+
+export default App
